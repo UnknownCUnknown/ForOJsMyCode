@@ -43,6 +43,7 @@ def run(id,password,path):
             print 'Something error'
         if not ok:
             print 'Wrong id or Wrong password'
+            return False
     url = 'http://acm.hdu.edu.cn/status.php?first=&pid=&user='+id+'&lang=0&status=5'
     flag = True
     while flag:
@@ -75,8 +76,11 @@ def run(id,password,path):
             flag = False;
         else:
             url = 'http://acm.hdu.edu.cn' + ans[0]
+    return True
 
-id = raw_input('请输入你的id:')
-password = getpass.getpass('请输入你的密码:')
-path = raw_input('请输入你想要保存的目录:')
-run(id,password,path)
+qt = False
+while not qt: 
+    id = raw_input('请输入你的id:')
+    password = getpass.getpass('请输入你的密码:')
+    path = raw_input('请输入你想要保存的目录:')
+    qt = run(id,password,path)
